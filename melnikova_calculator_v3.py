@@ -2,202 +2,145 @@ a = 'да'
 print('Привет')
 print('Эта программа может выполнять:')
 print("сложение - '+'")
+def s(x, y):
+    print(x, '+', y, '=', x + y)
+
 print("вычитание - '-'")
+def v(x, y):
+    print(x, '-', y, '=', x - y)
+
 print("умножение - '*'")
+def u(x, y):
+    print(x, '*', y, '=', x * y)
+
 print("деление - '/'")
+def d(x, y):
+    print(x, '/', y, '=', x / y)
+
 print("целочисленное деление - '//'")
+def c(x, y):
+    print(x, '//', y, '=', x // y)
+
 print("взятие остатка - '%'")
+def o(x, y):
+    print(x, '%', y, '=', x % y)
+
 print("возведение в степень - '**'")
+def vs(x, y):
+    print(x, '**', y, '=', x ** y)
+
 print("квадратный корень числа - '///'")
+def k(x):
+    print(x, '/// =', x ** 0.5)
+
 print("переводить из любой системы счисления в десятичную - '<>'")
+def p(x, y):
+    print(x, '=', int(str(x), y))
+
 print("анализ числа - '^'")
+def ch(x):
+    # 1 пункт про разряды
+    b = len(x)
+    if str(b)[-1] == '1':
+        print('1)', b, 'разряд')
+    elif str(b)[-1] == '2' or str(b)[-1] == '4' or str(b)[-1] == '3':
+        print('1)', b, 'разряда')
+    else:
+        print('1)', b, 'разрядов')
+    # 2 пункт про количество цифр
+    d = dict()
+    for i in str(x):
+        if i in d:
+            d[i] += 1
+        else:
+            d[i] = 1
+    print('2)', end='')
+    for i in d:
+        print(i, '=', d[i], 'р.')
+    # 3 пункт про четность
+    if x % 2 == 0:
+        print('3) четное')
+    else:
+        print('3) не четное')
+    # 4 пункт про сумму цифр
+    c = 0
+    for i in str(x):
+        c += int(i)
+    print('4) сумма цифр =', c)
+    # 5 пункт про простое число
+    if x % 2 != 0 and x % 3 != 0 and x % 5 != 0:
+        print('5) простое число')
+    else:
+        print('5) непростое число')
+        p = ''
+        for i in range(1, x + 1):
+            if x % i == 0:
+                p = p + ', ' + str(i)
+        print('делители:', p)
+    # пункт 6 про полный квадрат
+    if round(x ** 0.5) ** 2 == x:
+        print('6) является полным квадратом числа', x ** 0.5)
+    else:
+        print('6) не является полным квадратом')
+    s = ['', 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000]
+    r = ''
+    if len(str(x)) > 3 and len(str(x)) < 7:
+        for i in s:
+            if int(str(x)[:-3]) < i:
+                r = r + str(index(i) - 1)
+        for i in s:
+            if str(x)[-1] == str(i)[-1]:
+                r = r + str(index(i) - 1)
+    if len(str(x)) <= 3:
+        for i in s:
+            if int(str(x)) < i:
+                r = r + str(index(i) - 1)
+    if r ** 3 == x:
+        print('7) является полным кубом числа', r)
+    else:
+        print('7) не является полным кубом')
+
+
 while a == 'да' or a == 'lf':
-    v1 = 0
-    v2 = 0
-    v3 = 0
-    v4 = 0
-    v5 = 0
-    v6 = 0
-    v7 = 0
-    v8 = 0
-    v9 = 0
-    v0 = 0
     print('Напиши что ты хочешь от компуктера')
     print('Напиши певрое число')
-    x = float(input())
+    x = input()
     print('Напиши действие')
-    c = str(input())
-    if c == '+' or c == '-' or c == '*' or c == '/' or c == '//' or c == '%' or c == '**':
-        print('Напиши второе число')
-        y = float(input())
-        b = len(str(x))
-    elif c == '///' or c == '<>' or c == '^':
-        b = len(str(x))
+    c = input()
+    print('Напиши второе число')
+    if c == '///' or c == '^':
+        print("Если второе число не требуется нажмите Enter")
+    if c == '<>':
+        print('Ecли требуется перевод в десятичную систему счисления введите число системы счисления первого числа')
+    y = input()
+    if x.isdigit():
+        x = int(x)
+    if y.isdigit():
+        y = int(y)
+    if c == '+':
+        s(x, y)
+    elif c == '-':
+        v(x, y)
+    elif c == '*':
+        u(x, y)
+    elif c == '/':
+        d(x, Y)
+    elif c == '//':
+        c(x, y)
+    elif c == '%':
+        o(x, y)
+    elif c == '**':
+        vs(x, y)
+    elif c == '///':
+        k(x)
+    elif c == '<>':
+        p(x, y)
+    elif c == '^':
+        ch(x)
     else:
         print('Ошибка')
-        b = len(str(x))
-    if c == '+':
-        print(x, '+', y, '=', x + y)
-    elif c == '-':
-        print(x, '-', y, '=', x - y)
-    elif c == '*':
-        print(x, '*', y, '=', x * y)
-    elif c == '/':
-        print(x, '/', y, '=', x / y)
-    elif c == '//':
-        print(x, '//', y, '=', x // y)
-    elif c == '%':
-        print(x, '%', y, '=', x % y)
-    elif c == '**':
-        print(x, '**', y, '=', x ** y)
-    elif c == '///':
-        print(x, '/// =', x ** 0.5)
-    elif c == '<>':
-        print('я не поняла как это делать, но честно пыталась')
-        print('x =', int(x, 2))
-    elif c == '^':
-        if b == 1:
-            print('1) 1 разряд')
-        elif b == 2 or b == 4 or b == 3:
-            print('1)', b, 'разряда')
-        else:
-            print('1)', b, 'разрядов')
-        t = x
-        n = x
-        while b != 0:
-            if (x % 10) == 1:
-                v1 = 1 + v1
-            elif (x % 10) == 2:
-                v2 = 1 + v2
-            elif (x % 10) == 3:
-                v3 = 1 + v3
-            elif (x % 10) == 4:
-                v4 = 1 + v4
-            elif (x % 10) == 5:
-                v5 = 1 + v5
-            elif (x % 10) == 6:
-                v6 = 1 + v6
-            elif (x % 10) == 7:
-                v7 = 1 + v7
-            elif (x % 10) == 8:
-                v8 = v8 + 1
-            elif (x % 10) == 9:
-                v9 = v9 + 1
-            else:
-                v0 = 1 + v0
-            b = b - 1
-            x = x // 10
-        g = 0
-        print('2)')
-        if v1 != 0:
-            if v1 == 2 or v1 == 3 or v1 == 4:
-                print('1 =', v1, 'раза')
-            else:
-                print('1 =', v1, 'раз')
-        else:
-            g += 1
-        if v2 != 0:
-            if v2 == 2 or v2 == 3 or v2 == 4:
-                print('2 =', v2, 'раза')
-            else:
-                print('2 =', v2, 'раз')
-        else:
-            g += 1
-        if v3 != 0:
-            if v3 == 2 or v3 == 3 or v3 == 4:
-                print('3 =', v3, 'раза')
-            else:
-                print('3 =', v3, 'раз')
-        else:
-            g += 1
-        if v4 != 0:
-            if v4 == 2 or v4 == 3 or v4 == 4:
-                print('4 =', v4, 'раза')
-            else:
-                print('4 =', v4, 'раз')
-        else:
-            g += 1
-        if v5 != 0:
-            if v5 == 2 or v5 == 3 or v5 == 4:
-                print('5 =', v5, 'раза')
-            else:
-                print('5 =', v5, 'раз')
-        else:
-            g += 1
-        if v6 != 0:
-            if v6 == 2 or v6 == 3 or v6 == 4:
-                print('6 =', v6, 'раза')
-            else:
-                print('6 =', v6, 'раз')
-        else:
-            g += 1
-        if v7 != 0:
-            if v7 == 2 or v7 == 3 or v7 == 4:
-                print('7 =', v7, 'раза')
-            else:
-                print('7 =', v7, 'раз')
-        else:
-            g += 1
-        if v8 != 0:
-            if v8 == 2 or v8 == 3 or v8 == 4:
-                print('8 =', v8, 'раза')
-            else:
-                print('8 =', v8, 'раз')
-        else:
-            g += 1
-        if v9 != 0:
-            if v9 == 2 or v9 == 3 or v9 == 4:
-                print('9 =', v9, 'раза')
-            else:
-                print('9 =', v9, 'раз')
-        else:
-            g += 1
-        if v0 != 0:
-            if v0 == 2 or v0 == 3 or v0 == 4:
-                print('0 =', v0, 'раза')
-            else:
-                print('0 =', v0, 'раз')
-        else:
-            g += 1
-        if (t % 2) == 0:
-            print('3) четное')
-        else:
-            print('3) не четное')
-        d = len(str(t))
-        p = 0
-        while d != 0:
-            d = d - 1
-            p = p + t % 10
-            t = t // 10
-        print('4) сумма цифр =', p)
-        if n % 2 != 0 and n % 3 != 0 and n % 5 != 0:
-            print('5) простое число')
-        else:
-            print('5) непростое число')
-            m = 2
-            p = '1'
-            while n >= m:
-                if n % m == 0:
-                    p = p + ', ' + str(m)
-                    m += 1
-                else:
-                    m += 1
-        print('делители:', p)
-        z = n ** 0.5
-        z1 = round(z)
-        r = n ** (1 / 3)
-        r1 = round(r)
-        if z1 ** 2 == n:
-            print('6) является полным квадратом числа', z1)
-        else:
-            print('6) не является полным квадратом')
-        if r1 ** 3 == n:
-            print('7) является полным кубом числа', r1)
-        else:
-            print('7) не является полным кубом')
-    else:
+    if str(type(x)) != "<class 'int'>" and (str(type(y)) != "<class 'int'>" or y != ''):
         print('Ошибка')
     print('Желаете ли вы выполнить еще действие?')
-    print("Напишите 'да' если желаете выполнить еще действие")
     a = input()
 print('Пока')
